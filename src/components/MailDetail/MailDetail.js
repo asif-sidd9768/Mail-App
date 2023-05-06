@@ -26,9 +26,11 @@ export const MailDetail = () => {
 
   return (
     <div className='mail-detail-main-container'>
-      <div className='mail-detail-buttons-container'>
+      {
+        location.pathname !== "/trash" && <div className='mail-detail-buttons-container'>
         <MailDetailBtns {...selectedMail} />
       </div>
+      }
       <div className='mail-detail-card-container'>
         <div className="mail-detail-card-avatar"><i className="fa-solid fa-user-astronaut mail-detail-card-avatar-icon"></i></div>
         <div className="mail-detail-card-details">
