@@ -11,6 +11,7 @@ import {
 
 export const MailDetailBtns = ({ email_id, read, isStarred, isSpam }) => {
   const { dispatch } = useContext(MailContext);
+  
   const toggleReadMail = () => {
     dispatch(toggleMailReadAction(email_id));
   };

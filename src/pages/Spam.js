@@ -4,11 +4,12 @@ import { MailContext } from "../contexts/MailContext";
 import "../styles/Spam.css";
 import MasterList from "../components/MasterList/MasterList";
 import { MailDetail } from "../components/MailDetail/MailDetail";
+import { getMailsList } from "../utils/filterUtil";
 
 export const Spam = () => {
   const { state, dispatch } = useContext(MailContext);
 
-  const spamMails = state.inboxList.filter(({isSpam}) => isSpam)
+  const spamMails = getMailsList(state, true)
   return (
     <div className="mails-container">
       <div className="mail-list-container">

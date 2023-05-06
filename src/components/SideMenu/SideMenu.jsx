@@ -1,5 +1,5 @@
 import { Fragment, useContext } from "react";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 
 import { MailContext } from "../../contexts/MailContext";
 import LogoImg from "../../assets/images/logo.png"
@@ -8,6 +8,7 @@ import "./SideMenu.css";
 
 export const SideMenu = () => {
   const { state } = useContext(MailContext)
+  const location = useLocation()
   const getActiveStyle = ({ isActive }) => ({
     backgroundColor: isActive ? "white" : "",
     borderLeft: isActive ? "6px solid skyblue" : "6px solid #f6f8fa",
@@ -15,13 +16,17 @@ export const SideMenu = () => {
   });
   
   const inboxCount = state.inboxList.reduce((acc, curr) => curr.isSpam ? acc : acc +=1, 0)
-  const readCount = state.filteredList.reduce((acc, curr) => (curr.read) ? acc+=1 : acc, 0)
-  const unreadCount = state.filteredList.reduce((acc, curr) => (!curr.read) ? acc+=1 : acc, 0)
-  const starCount = state.filteredList.reduce((acc, curr) => (curr.isStarred) ? acc+=1 : acc, 0)
-  const unstarCount = state.filteredList.reduce((acc, curr) => (!curr.isStarred) ? acc+=1 : acc, 0)
+  const readCount = state.inboxList.reduce((acc, curr) => (!curr.isSpam && curr.read) ? acc+=1 : acc, 0)
+  const unreadCount = state.inboxList.reduce((acc, curr) => (!curr.isSpam && !curr.read) ? acc+=1 : acc, 0)
+  const starCount = state.inboxList.reduce((acc, curr) => (!curr.isSpam && curr.isStarred) ? acc+=1 : acc, 0)
+  const unstarCount = state.inboxList.reduce((acc, curr) => (!curr.isSpam && !curr.isStarred) ? acc+=1 : acc, 0)
+  const searchCount = state.inboxList.reduce((acc, curr) => !curr.isSpam && curr.email_subject.toLowerCase().includes(state.searchTerm.toLowerCase()) ? acc += 1 : acc, 0)
+
+  const searchCountSpam = state.inboxList.reduce((acc, curr) => curr.isSpam && curr.email_subject.toLowerCase().includes(state.searchTerm.toLowerCase()) ? acc += 1 : acc, 0)
+  const readCountSpam = state.inboxList.reduce((acc, curr) => (curr.isSpam && curr.read) ? acc+=1 : acc, 0)
+  const unreadCountSpam = state.inboxList.reduce((acc, curr) => (curr.isSpam && !curr.read) ? acc+=1 : acc, 0)
 
   const spamCount = state.inboxList.reduce((acc, curr) => curr.isSpam ? acc += 1 : acc, 0)
-  const starredCount = state.filteredList.reduce((acc, curr) => curr.isStarred ? acc += 1 : acc, 0)
   const trashCount = state.trashList.length
 
   const getStarUnstar = () => {
@@ -36,11 +41,34 @@ export const SideMenu = () => {
   }
 
   const getReadUnread = () => {
+    if(location.pathname === "/spam"){
+      return null
+    }
+    if(state.searchTerm){
+      return <span><i class="fa-solid fa-magnifying-glass"></i>{searchCount}</span>
+    }
     switch(state.readUnreadFilter){
       case "read":
         return <span><i className="fa-solid fa-envelope-open side-menu-count-icon"></i>{readCount}</span>
       case "unread":
         return <span><i className="fa-solid fa-envelope side-menu-count-icon"></i>{unreadCount}</span>
+      default: 
+        return null
+    }
+  }
+
+  const getReadUnreadSpam = () => {
+    if(location.pathname === "/"){
+      return null
+    }
+    if(state.searchTerm){
+      return <span><i class="fa-solid fa-magnifying-glass"></i>{searchCountSpam}</span>
+    }
+    switch(state.readUnreadFilter){
+      case "read":
+        return <span><i className="fa-solid fa-envelope-open side-menu-count-icon"></i>{readCountSpam}</span>
+      case "unread":
+        return <span><i className="fa-solid fa-envelope side-menu-count-icon"></i>{unreadCountSpam}</span>
       default: 
         return null
     }
@@ -58,7 +86,7 @@ export const SideMenu = () => {
           <i className="fa-solid fa-inbox menu-item-icon"></i>Inbox
           <span className="side-menu-count side-menu-unread-count">
             {
-              getStarUnstar() || getReadUnread() ||inboxCount
+              (getStarUnstar() || getReadUnread() ||inboxCount)
             }
           </span>
           {/* <span className="side-menu-count side-menu-unread-count">
@@ -73,7 +101,13 @@ export const SideMenu = () => {
           </span> */}
         </NavLink>
         <NavLink style={getActiveStyle} className="menu-item" to="/spam">
-          <i className="fa-solid fa-exclamation-triangle menu-item-icon"></i>Spam<span className="side-menu-count side-menu-spam-count">{spamCount}</span>
+          <i className="fa-solid fa-exclamation-triangle menu-item-icon"></i>Spam
+          <span className="side-menu-count side-menu-spam-count">
+            {
+              getReadUnreadSpam() || spamCount
+            }
+          </span>
+          {/* <span className="side-menu-count side-menu-spam-count">{spamCount}</span> */}
         </NavLink>
         <NavLink style={getActiveStyle} className="menu-item" to="/trash">
           <i className="fa-solid fa-trash menu-item-icon"></i>Trash<span className="side-menu-count side-menu-trash-count">{trashCount}</span>

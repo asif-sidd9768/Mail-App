@@ -9,7 +9,7 @@ import { NoMailSelected } from '../NoMailSelected/NoMailSelected';
 export const MailDetail = () => {
   const { state, dispatch } = useContext(MailContext);
   const location = useLocation()
-  const selectedMail = location.pathname === "/trash" ? state.trashList.find((item) => item.email_id === state.selectedItem) : state.filteredList.find((item) => item.email_id === state.selectedItem);
+  const selectedMail = location.pathname === "/trash" ? state.trashList.find((item) => item.email_id === state.selectedItem) : state.inboxList.find((item) => item.email_id === state.selectedItem);
 
   if (!selectedMail) {
     return <NoMailSelected/>;
