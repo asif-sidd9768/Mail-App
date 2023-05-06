@@ -16,7 +16,7 @@ export const mailReducer = (state, action) => {
       const updatedMailsAfterSpamTg = state.inboxList.map((mail) => mail.email_id === action.payload ? {...mail, isSpam: !mail.isSpam}: mail)
       return {...state, inboxList: updatedInboxAfterSpamTg, filteredList: updatedMailsAfterSpamTg, selectedItem: action.payload}
     case "MAIL_SEARCH":
-      return {...state, searchTerm:action.payload}
+      return {...state, searchTerm:action.payload, readUnreadFilter: null, starUnStarredFilter: null, viewingAll: true}
     case "DELETE_MAIL":
       const deletedMail = state.inboxList.find(({email_id}) =>  email_id === action.payload)
       const updatedMailsAfterDelete = state.inboxList.filter(({email_id}) => email_id !== action.payload)
