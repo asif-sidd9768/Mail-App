@@ -1,0 +1,19 @@
+.spam-mail-container {
+  border: 2px solid gray;
+  margin: 10px;
+}
+.mails-container {
+  display: flex;
+  height: 100%;
+}
+
+.mail-list-container{
+  width: 40%;
+  background-color: #f6f7f3;
+  padding: 1rem 1.5rem;
+}
+
+.mail-detail-container{
+  width: 60%;
+  padding: 1rem;
+}

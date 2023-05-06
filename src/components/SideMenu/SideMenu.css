@@ -1,0 +1,80 @@
+.menu-container {
+  margin-top: 2rem;
+}
+
+.side-menu-logo-container {
+  margin: 1rem 2rem 1rem 2.5rem;
+  padding-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+}
+
+.side-menu-logo {
+  width: 60px;
+}
+
+.logo-container::before{
+  content: 'Leap into Seamless Email Adventures!';
+  color: #291e1d;
+  /* display: inline-block; */
+  font-size: 0.9rem;
+  position: relative;
+  top: 85px;
+  left: 10px;
+  font-family: 'Caveat';
+}
+/* .side-menu-logo-container::before{
+  content: 'Leap into Seamless Email Adventures!';
+  width: 150px;
+  height: 20px;
+  color: #291e1d;
+  display: inline-block;
+  font-size: 0.9rem;
+  position: relative;
+  top: 100px;
+  left: 10px;
+  font-family: 'Caveat';
+} */
+
+.menu-item {
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  display: block;
+  padding: 1rem 2rem;
+  text-decoration: none;
+  color: black;
+  font-weight: bold;
+}
+
+.menu-item-icon {
+  margin: 0 1rem;
+}
+
+.side-menu-count {
+  float: right;
+  color: white;
+  /* background-color: #ec6964; */
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 0.9rem;
+}
+
+.side-menu-unread-count {
+  background-color: #ec6964;
+}
+
+.side-menu-spam-count {
+  background-color: orange;
+}
+
+.side-menu-trash-count {
+  background-color: rgb(197, 3, 3);
+}
+
+.side-menu-starred-count {
+  background-color: rgb(222, 211, 3);
+}
+
+.side-menu-count-icon {
+  margin-right: 4px;
+}

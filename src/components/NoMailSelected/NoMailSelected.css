@@ -1,0 +1,16 @@
+.no-mail-selected-container {
+  position: relative;
+  top: 20%;
+  text-align: center;
+}
+
+.no-mail-selected-icon {
+  font-size: 3rem;
+  color: #777777;
+} 
+
+.no-mail-selected-text {
+  font-size: 1.3rem;
+  color: #999999;
+  margin-top: 1rem;
+}

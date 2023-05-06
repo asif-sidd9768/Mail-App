@@ -1,0 +1,44 @@
+.mail-detail-btn {
+  margin: 1rem 0.8rem;
+  cursor: pointer;
+  font-size: 1.35rem;
+  /* color: #999999; */
+}
+
+.mail-delete-btn, 
+.mail-read-btn,
+.mail-unread-btn,
+.mail-spam-btn,
+.mail-star-btn,
+.mail-unstar-btn,
+.mail-not-spam-btn {
+  transition: 0.2s;
+}
+
+.mail-read-btn:hover {
+  color: teal;
+}
+
+.mail-unread-btn:hover {
+  color: darkblue;
+}
+
+.mail-delete-btn:hover {
+  color: rgb(185, 8, 8);
+}
+
+.mail-star-btn:hover {
+  color: rgb(222, 211, 3);
+}
+
+.mail-spam-btn:hover {
+  color: orange;
+}
+
+.mail-unstar-btn:hover {
+  color: rgb(215, 177, 130);
+}
+
+.mail-not-spam-btn:hover {
+  color: green;
+}

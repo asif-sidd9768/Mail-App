@@ -1,0 +1,37 @@
+*{
+  margin: 0;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100vh;
+}
+
+#root {
+  height: 100vh;
+}
+
+.main-container {
+  display: flex;
+  overflow-y: hidden;
+  height: 100vh;
+}
+
+.side-menu-container {
+  width: 20%;
+  height: 100vh;
+  flex-grow: 3;
+  flex-shrink: 0;
+  background-color: #ecf0f4;
+  box-shadow: 5px 0 12px rgba(0,0,0,0.1);
+  z-index: 1;
+}
+
+.main-content-container {
+  width: 80%;
+  flex-grow: 4;
+  flex-shrink: 4;
+}

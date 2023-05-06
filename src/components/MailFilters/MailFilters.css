@@ -1,0 +1,63 @@
+.filters-container {
+  margin: 0.5rem 2rem;
+  display: flex;
+  align-items: center;
+}
+
+.mail-filter-btn {
+  margin: 1rem 0.3rem;
+  cursor: pointer;
+  font-size: 1.3rem;
+}
+
+.filter-text {
+  font-size: 1.3rem;
+  margin: 0 0.5rem 0 0;
+}
+
+.mail-read-filter-btn:hover {
+  color: teal;
+}
+
+.mail-unread-filter-btn:hover {
+  color: thistle;
+}
+
+.mail-star-filter-btn:hover {
+  color: rgb(222, 211, 3);
+}
+
+.mail-unstar-filter-btn:hover {
+  color :darksalmon;
+}
+
+
+.filter-btn {
+  transition: 0.2s;
+}
+
+.view-all-btn {
+  cursor: pointer;
+  padding: 4px 8px;
+  transition: 0.2s ease-in;
+  border: none;
+  background: none;
+  font-size: 1rem;
+  background-color: rgb(249, 198, 154);
+  color: rgb(114, 76, 6);
+  border-radius: 4px;
+  margin: 0 0 0 0.5rem;
+}
+
+.view-all-btn:hover:enabled {
+  border-radius: 8px;
+  background-color: rgb(243, 176, 117);
+  box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.view-all-btn:disabled {
+  background-color: rgba(227, 227, 227,0.4);
+  color: rgba(58, 57, 57,0.6);
+  font-size: 0.9rem;
+  cursor:not-allowed;
+}
